@@ -1,5 +1,5 @@
 import { Briefcase, Code, User } from "lucide-react";
-import resumeFile from "../assets/Harish Ragavendra A Resume.pdf";
+
 
 export const AboutSection = () => {
   return (
@@ -35,8 +35,9 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href={resumeFile}
-                download="Harish Ragavendra A Resume.pdf"
+                href="https://drive.google.com/uc?export=download&id=136oGfNEzOjuVz15xMnFnnPsiP69f91Hc"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
