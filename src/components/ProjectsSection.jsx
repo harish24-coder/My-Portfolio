@@ -7,7 +7,8 @@ const projects = [
     description: "A beautiful and responsive modern Next gen virtual reality page app using Figma.",
     image: "/projects/project1.png",
     tags: ["Figma", "Plugins",],
-    demoUrl: "#",
+    demoUrl: "https://www.figma.com/proto/C9PslRbXoHVxbhwxItPW5n/VR-WEBSITE?node-id=1-3&t=7ayhskZmxWPZWrfR-1",
+    githubUrl: "https://github.com/harish24-coder",
   },
   {
     id: 2,
@@ -16,7 +17,8 @@ const projects = [
       "Interactive Aura AI app and analytics dashboard with data visualization and filtering capabilities.",
     image: "/projects/project2.png",
     tags: ["Figma", "Plugins",],
-    demoUrl: "#",
+    demoUrl: "https://www.figma.com/proto/WYojwzaxOOhNG9MmTEh1w0/Aura-AI?node-id=0-1&t=Dw9lporFk9goH6eD-1",
+    githubUrl: "https://github.com/harish24-coder",
   },
   {
     id: 3,
@@ -25,7 +27,8 @@ const projects = [
       "A seamless social platform for high-quality image sharing, smart search, and visual discovery.",
     image: "/projects/project3.png",
     tags: ["Figma", "Plugins",],
-    demoUrl: "#",
+    demoUrl: "https://www.figma.com/proto/1AHFMaPKoqaftvDRQx18ap/Photo-App?node-id=0-1&t=vSe4bRjZU9ENtcaS-1",
+    githubUrl: "https://github.com/harish24-coder",
   },
 ];
 
