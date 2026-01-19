@@ -78,10 +78,10 @@ export const AboutSection = () => {
                 </div>
 
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Project Management</h4>
+                  <h4 className="font-semibold text-lg">UI/UX Reseacher</h4>
                   <p className="text-muted-foreground">
-                    Leading projects from conception to completion with agile
-                    methodologies.
+                    End-to-end UX research focused on user empathy, data-driven personas, 
+                    and iterative usability testing.
                   </p>
                 </div>
               </div>

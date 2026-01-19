@@ -91,21 +91,23 @@ export const ContactSection = () => {
             </div>
 
             <div className="pt-8">
-              <h4 className="font-medium mb-4"> Connect With Me</h4>
-              <div className="flex space-x-4 justify-center">
-                <a href="#" target="_blank">
-                  <Linkedin />
-                </a>
-                <a href="#" target="_blank">
-                  <Twitter />
-                </a>
-                <a href="#" target="_blank">
-                  <Instagram />
-                </a>
-                <a href="#" target="_blank">
-                  <Twitch />
-                </a>
-              </div>
+                <h4 className="font-medium mb-4 text-center md:text-left"> Connect With Me</h4>
+                <div className="flex space-x-4 justify-center md:justify-start">
+                  {/* LinkedIn */}
+                  <a href="http://linkedin.com/in/harish-ragavendra-0b7276239" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+                    <Linkedin />
+                  </a>
+    
+                  {/* Twitter/X */}
+                  <a href="https://x.com/raga2576?s=21" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+                    <Twitter />
+                  </a>
+     
+                  {/* Instagram */}
+                  <a href="https://www.instagram.com/harxshh?igsh=MzRhazE4aHo1ZTJ5&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+                    <Instagram />
+                  </a>
+               </div>
             </div>
           </div>
 
