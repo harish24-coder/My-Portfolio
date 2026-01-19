@@ -8,6 +8,7 @@ import {
   Twitch,
   Twitter,
 } from "lucide-react";
+import emailjs from "@emailjs/browser"; 
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -15,20 +16,42 @@ import { useState } from "react";
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const SERVICE_ID = "service_1n9t06a";
+  const TEMPLATE_ID = "template_hqexo1e";
+  const PUBLIC_KEY = "4p34RcQUEfL-2aYJc";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    emailjs
+      .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
+      .then((result) => {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you! I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        toast({
+          variant: "destructive",
+          title: "Oops!",
+          description: "Something went wrong. Please try again.",
+        });
+        console.error("EmailJS Error:", error);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-      setIsSubmitting(false);
-    }, 1500);
   };
+
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -43,15 +66,12 @@ export const ContactSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">
-              {" "}
-              Contact Information
-            </h3>
+            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
 
-            <div className="space-y-6 justify-center">
+            <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
+                  <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium"> Email</h4>
@@ -63,9 +83,10 @@ export const ContactSection = () => {
                   </a>
                 </div>
               </div>
+
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />{" "}
+                  <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium"> Phone</h4>
@@ -77,53 +98,61 @@ export const ContactSection = () => {
                   </a>
                 </div>
               </div>
+
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
+                  <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
+                  <span className="text-muted-foreground">
                     London, United Kingdom
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
 
             <div className="pt-8">
-                <h4 className="font-medium mb-4 text-center md:text-left"> Connect With Me</h4>
-                <div className="flex space-x-4 justify-center md:justify-start">
-                  {/* LinkedIn */}
-                  <a href="http://linkedin.com/in/harish-ragavendra-0b7276239" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
-                    <Linkedin />
-                  </a>
-    
-                  {/* Twitter/X */}
-                  <a href="https://x.com/raga2576?s=21" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
-                    <Twitter />
-                  </a>
-     
-                  {/* Instagram */}
-                  <a href="https://www.instagram.com/harxshh?igsh=MzRhazE4aHo1ZTJ5&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
-                    <Instagram />
-                  </a>
-               </div>
+              <h4 className="font-medium mb-4 text-center md:text-left">
+                Connect With Me
+              </h4>
+              <div className="flex space-x-4 justify-center md:justify-start">
+                <a
+                  href="http://linkedin.com/in/harish-ragavendra-0b7276239"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  <Linkedin />
+                </a>
+                <a
+                  href="https://x.com/raga2576?s=21"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  <Twitter />
+                </a>
+                <a
+                  href="https://www.instagram.com/harxshh?igsh=MzRhazE4aHo1ZTJ5&utm_source=qr"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  <Instagram />
+                </a>
+              </div>
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
+          <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
-
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Name
                 </label>
                 <input
@@ -131,8 +160,12 @@ export const ContactSection = () => {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Pedro Machado..."
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Harish..."
                 />
               </div>
 
@@ -141,7 +174,6 @@ export const ContactSection = () => {
                   htmlFor="email"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Email
                 </label>
                 <input
@@ -149,8 +181,12 @@ export const ContactSection = () => {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="john@gmail.com"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Harish@gmail.com"
                 />
               </div>
 
@@ -159,14 +195,17 @@ export const ContactSection = () => {
                   htmlFor="message"
                   className="block text-sm font-medium mb-2"
                 >
-                  {" "}
                   Your Message
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none min-h-[120px]"
                   placeholder="Hello, I'd like to talk about..."
                 />
               </div>
@@ -175,7 +214,7 @@ export const ContactSection = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
+                  "cosmic-button w-full flex items-center justify-center gap-2 py-3 px-6 rounded-md font-medium transition-all"
                 )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
@@ -187,4 +226,4 @@ export const ContactSection = () => {
       </div>
     </section>
   );
-};
+}; 
