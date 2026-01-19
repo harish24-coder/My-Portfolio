@@ -2,29 +2,29 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const skills = [
-  // Frontend
-  { name: "HTML/CSS", level: 95, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "React", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 85, category: "frontend" },
-  { name: "Tailwind CSS", level: 90, category: "frontend" },
-  { name: "Next.js", level: 80, category: "frontend" },
+  // UIDesign
+  { name: "Wireframing", level: 95, category: "UIDesign" },
+  { name: "Prototyping", level: 90, category: "UIDesign" },
+  { name: "Responsive Design", level: 90, category: "UIDesign" },
+  { name: "Design Systems", level: 75, category: "UIDesign" },
+  { name: "Mockups", level: 56, category: "UIDesign" },
+  { name: "Visual Hierarchy", level: 60, category: "UIDesign" },
 
-  // Backend
-  { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express", level: 75, category: "backend" },
-  { name: "MongoDB", level: 70, category: "backend" },
-  { name: "PostgreSQL", level: 65, category: "backend" },
-  { name: "GraphQL", level: 60, category: "backend" },
+  // UX Research
+  { name: "User Interviews", level: 50, category: "UX Research" },
+  { name: "Empathy Mapping", level: 45, category: "UX Research" },
+  { name: "Persona Mapping", level: 70, category: "UX Research" },
+  { name: "Information Architecture", level: 45, category: "UX Research" },
+  { name: "Usability Testing", level: 40, category: "UX Research" },
 
   // Tools
   { name: "Git/GitHub", level: 90, category: "tools" },
-  { name: "Docker", level: 70, category: "tools" },
+  { name: "Canva", level: 70, category: "tools" },
   { name: "Figma", level: 85, category: "tools" },
-  { name: "VS Code", level: 95, category: "tools" },
+  { name: "Framer", level: 65, category: "tools" },
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
+const categories = ["all", "UIDesign", "UX Research", "tools"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
